@@ -10,8 +10,6 @@ public class SCalculator implements ICalculator {
 
     @Override
     public String plus(int num1, int num2) {
-//        int num1 = Integer.parseInt(String.valueOf(values[0]));
-//        int num2 = Integer.parseInt(String.valueOf(values[1]));
         int Result = num1 + num2;
         return "<center><b>" + num1 + " + " + num2 + " =  " + Result + "</center></b>";
     }
