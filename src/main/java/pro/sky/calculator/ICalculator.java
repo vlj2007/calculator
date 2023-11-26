@@ -1,8 +1,9 @@
 package pro.sky.calculator;
 
 public interface ICalculator {
-    String plus(int num1, int num2);
-    String minus(int num1, int num2);
-    String multiply(int num1, int num2);
-    String divide(int num1, int num2);
+    String welcome();
+    Integer plus(Integer num1, Integer num2);
+    Integer minus(Integer num1, Integer num2);
+    Integer multiply(Integer num1, Integer num2);
+    Double divide(Integer num1, Integer num2);
 }

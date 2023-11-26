@@ -1,10 +1,8 @@
 package pro.sky.calculator;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestParam;
+
+import jakarta.servlet.http.HttpServletResponse;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/calculator")
@@ -15,28 +13,42 @@ public class CCalculator {
         this.service = service;
     }
 
+    @GetMapping()
+    public String welcomeCalculator() {
+        return service.welcome();
+    }
+
     @GetMapping(path = "/plus")
     public String plus(@RequestParam("num1") int num1, @RequestParam("num2") int num2) {
-        return service.plus(num1, num2);
+        Integer result = service.plus(num1, num2);
+        return num1 + " + " + num2 + " = " + result;
+
     }
 
     @GetMapping(path = "/minus")
     public String minus(@RequestParam("num1") int num1, @RequestParam("num2") int num2) {
-        return service.minus(num1, num2);
+        Integer result = service.minus(num1, num2);
+        return num1 + " - " + num2 + " = " + result;
     }
 
     @GetMapping(path = "/multiply")
     public String multiply(@RequestParam("num1") int num1, @RequestParam("num2") int num2) {
-        return service.multiply(num1, num2);
+        Integer result = service.multiply(num1, num2);
+        return num1 + " * " + num2 + " = " + result;
     }
 
     @GetMapping(path = "/divide")
     public String divide(@RequestParam("num1") int num1, @RequestParam("num2") int num2) {
-        return service.divide(num1, num2);
+        Double result = service.divide(num1, num2);
+        return num1 + " / " + num2 + " = " + result;
     }
 
 
-
+    @ExceptionHandler(IllegalArgumentException.class)
+    public String divideByZero(IllegalArgumentException e, HttpServletResponse response){
+        response.setStatus(400);
+        return e.getMessage();
+    }
 
 
 }

@@ -1,5 +1,4 @@
 package pro.sky.calculator;
-import pro.sky.calculator.ICalculator;
 
 import org.springframework.stereotype.Service;
 
@@ -9,27 +8,30 @@ public class SCalculator implements ICalculator {
     private int num2;
 
     @Override
-    public String plus(int num1, int num2) {
-        int Result = num1 + num2;
-        return "<center><b>" + num1 + " + " + num2 + " =  " + Result + "</center></b>";
-    }
-    @Override
-    public String minus(int num1, int num2){
-        int Result = num1 - num2;
-        return "<center><b>" + num1 + " - " + num2 + " =  " + Result + "</center></b>";
-    }
-    @Override
-    public String multiply(int num1, int num2){
-        int Result = num1 * num2;
-        return "<center><b>" + num1 + " * " + num2 + " =  " + Result + "</center></b>";
-    }
-    @Override
-    public String divide(int num1, int num2) throws IllegalArgumentException{
-        if (num2 == 0) {
-            throw new IllegalArgumentException("Error null");
-        } else {
-            return "<center><b>" + num1 + " / " + num2 + " = " + (float) (num1 / num2) + "</center></b>";
-        }
+    public String welcome() {
+        return "<center><b>" + "Добро пожаловать в калькулятор" + "</center></b>";
     }
 
+    @Override
+    public Integer plus(Integer num1, Integer num2) {
+        return num1 + num2;
+
+    }
+
+    @Override
+    public Integer minus(Integer num1, Integer num2) {
+        return num1 - num2;
+
+    }
+
+    @Override
+    public Integer multiply(Integer num1, Integer num2) {
+        return num1 * num2;
+    }
+
+    @Override
+    public Double divide(Integer num1, Integer num2) {
+        if (num2 == 0) throw new IllegalArgumentException("Error null");
+        return num1.doubleValue() / num2.doubleValue();
+    }
 }
