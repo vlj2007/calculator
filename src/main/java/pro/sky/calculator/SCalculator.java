@@ -14,18 +14,21 @@ public class SCalculator implements ICalculator {
 
     @Override
     public Integer plus(Integer num1, Integer num2) {
+        if (num1 == null || num2 == null) throw new IllegalArgumentException("Отсутствуе один из входных аргументов");
         return num1 + num2;
 
     }
 
     @Override
     public Integer minus(Integer num1, Integer num2) {
+        if (num1 == null || num2 == null) throw new IllegalArgumentException("Отсутствуе один из входных аргументов");
         return num1 - num2;
 
     }
 
     @Override
     public Integer multiply(Integer num1, Integer num2) {
+        if (num1 == null || num2 == null) throw new IllegalArgumentException("Отсутствуе один из входных аргументов");
         return num1 * num2;
     }
 

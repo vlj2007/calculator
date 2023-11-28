@@ -1,6 +1,9 @@
 package pro.sky.calculator;
 
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -14,22 +17,23 @@ public class SCalculatorTest {
         assertEquals(expected, iCalculator.welcome());
     }
 
-    @Test
-    public void getPlusNumbers() {
-        Integer expected = 10;
-        assertEquals(expected, iCalculator.plus(5, 5));
+
+    @ParameterizedTest
+    @CsvSource(value = {"5,5,10", "-8,4,-4"})
+    public void getPlusNumbers(Integer num1, Integer num2, Integer expected) {
+        assertEquals(expected, iCalculator.plus(num1, num2));
     }
 
-    @Test
-    public void getMinusNumbers() {
-        Integer expected = 0;
-        assertEquals(expected, iCalculator.minus(5, 5));
+    @ParameterizedTest
+    @CsvSource(value = {"5,5,0", "-8,4,-12"})
+    public void getMinusNumbers(Integer num1, Integer num2, Integer expected) {
+        assertEquals(expected, iCalculator.minus(num1, num2));
     }
 
-    @Test
-    public void getMultiplyNumbers() {
-        Integer expected = 25;
-        assertEquals(expected, iCalculator.multiply(5, 5));
+    @ParameterizedTest
+    @CsvSource(value = {"5,5,25", "-8,4,-32"})
+    public void getMultiplyNumbers(Integer num1, Integer num2, Integer expected) {
+        assertEquals(expected, iCalculator.multiply(num1, num2));
     }
 
     @Test
